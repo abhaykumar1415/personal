@@ -1,9 +1,6 @@
-<p>
-  employee-listing works!
-  <a routerLink="/employees/add">Add</a>
-  <button mat-raised-button color="primary">Primary</button>
-
-</p>
+<div class="addEmpBtn">
+  <button mat-raised-button color="primary" (click)="navigateToAddEmp()">Add Employee</button>
+</div>
 
 <mat-form-field>
   <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">

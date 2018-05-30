@@ -10,28 +10,41 @@ import { Router } from '@angular/router';
 export class EmployeeAddComponent implements OnInit {
   private emp: any = {};
   constructor(private sharedData: SharedDataService, private snackBar: MatSnackBar, private router: Router) {
+    /**
+     * Initializing emplty object in emp object which will be used in the template.
+     */
     this.emp.address = {};
   }
 
   ngOnInit() {
   }
 
+  /** 
+   * Function to save data via service.
+  */
   saveDate() {
-    console.log('Data :', this.emp);
     let validName = !this.emp.name || this.emp.name.length < 4 ? false: true;
     let validPhone = !this.emp.phone || this.emp.phone.length === 0 ? false: true;
     if ( !(validName&&validPhone) ) {
       this.openSnackBar('Name and phone are rquired !');
     } else {
-      console.log('Save data');
       this.emp.id=  Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
       this.sharedData.addData(this.emp);
       this.router.navigate(['/employees']);
     }
   }
+
+  /**
+   * Function for snackbar to show some message.
+   * @param message
+   */
   openSnackBar(message) {
     this.snackBar.open(message, 'Please retry',{
       duration: 2000,
     });
+  }
+  reset() {
+    this.emp = {};
+    this.emp.address = {};
   }
 }

@@ -15,18 +15,30 @@ export class EmployeeListingComponent implements OnInit {
   constructor(private sharedData: SharedDataService,  private router: Router) {
     this.data = sharedData.getdata();
     this.dataSource = new MatTableDataSource(this.data);
-    console.log('Data :', this.data);
   }
 
   ngOnInit() {
+    /**
+     * Custom filters
+     */
     this.dataSource.filterPredicate = (data,filter) => ( data.name.toLowerCase().indexOf(filter) != -1 || data.address.city.toLowerCase().indexOf(filter) != -1 );
   }
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim().toLowerCase();
     this.dataSource.filter = filterValue;
+  
   }
+  /**
+   * Function to navigate to employee edit page
+   */
   navigateToEdit(id) {
-    console.log('asjdlka');
     this.router.navigate(['/employees/' + id +'/edit']);
+  }
+
+  /**
+   * Function to navigate to employee add page
+   */
+  navigateToAddEmp() {
+    this.router.navigate(['/employees/add']);
   }
 }
