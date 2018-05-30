@@ -8,10 +8,23 @@ export class SharedDataService {
   constructor() { }
 
   getdata() {
-    // console.log('getdata:', JSON.parse(window.localStorage.getItem('data')));
     return JSON.parse(window.localStorage.getItem('data'));
   }
-  setData(payload) {
-    JSON.stringify(window.localStorage.setItem('data', payload));
+  addData(payload) {
+    let existingData = this.getdata();
+    if ( !existingData ) {
+      existingData = [];
+    } 
+      existingData.push(payload);
+      window.localStorage.setItem('data', JSON.stringify(existingData));
+  }
+  update(payload) {
+    let data = this.getdata();
+    data.map((record, index) => {
+      if ( record.id === payload.id ) {
+        data[index] = payload;
+        window.localStorage.setItem('data', JSON.stringify(data));
+      }
+    });
   }
  }

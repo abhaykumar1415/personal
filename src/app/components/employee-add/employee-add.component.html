@@ -1,3 +1,32 @@
-<p>
-  employee-add works!
-</p>
+<mat-card>
+  <form class="example-form">
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="Name" name="empName" [(ngModel)]="emp.name" required="required">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <input matInput type="number" placeholder="Phone" name="phone" [(ngModel)]="emp.phone" required="required">
+      </mat-form-field></td>
+    </tr></table>
+    <p>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Address 1" name="address 1" [(ngModel)]="emp.address.address_line1"></textarea>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Address 2" name="address 2" [(ngModel)]="emp.address.address_line2" ></textarea>
+      </mat-form-field>
+    </p>
+
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <input matInput placeholder="City" name="City" [(ngModel)]="emp.address.city">
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <input matInput #postalCode maxlength="5" placeholder="Postal Code" name="postalCode" [(ngModel)]="emp.address.postal_code">
+        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+      </mat-form-field></td>
+    </tr></table>
+  </form>
+  <button mat-raised-button>Reset</button>
+  <button mat-raised-button color="primary" (click)="saveDate()">Save</button>
+</mat-card>

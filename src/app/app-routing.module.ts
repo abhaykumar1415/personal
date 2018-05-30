@@ -4,7 +4,7 @@ import { EmployeeListingComponent } from './components/employee-listing/employee
 import { EmployeeAddComponent } from './components/employee-add/employee-add.component';
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 const routes: Routes = [{
-  path: "",
+  path: "employees",
   component: EmployeeListingComponent
 },
 {
@@ -12,12 +12,17 @@ const routes: Routes = [{
   component: EmployeeAddComponent
 },
 {
-  path: "employees/:data/edit",
+  path: "employees/:id/edit",
   component: EmployeeEditComponent
 },
 {
   path: '**',
-  redirectTo: "/",
+  redirectTo: "employees",
+  pathMatch: 'full'
+},
+{
+  path: '',
+  redirectTo: "employees",
   pathMatch: 'full'
 }];
 

@@ -18,32 +18,37 @@
 
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name </th>
-    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.name ? element.name : 'NA'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="phone">
     <th mat-header-cell *matHeaderCellDef> Phone </th>
-    <td mat-cell *matCellDef="let element"> {{element.phone}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.phone ? element.phone: 'NA'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="city">
     <th mat-header-cell *matHeaderCellDef> City </th>
-    <td mat-cell *matCellDef="let element"> {{element.address.city}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.address.city ? element.address.city: 'NA'}} </td>
   </ng-container>
 
   <ng-container matColumnDef="address1">
     <th mat-header-cell *matHeaderCellDef> Address 1 </th>
-    <td mat-cell *matCellDef="let element"> {{element.address.address_line1}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.address.address_line1 ? element.address.address_line1 : 'NA'}} </td>
   </ng-container>
   
   <ng-container matColumnDef="address2">
     <th mat-header-cell *matHeaderCellDef> Address 2 </th>
-    <td mat-cell *matCellDef="let element"> {{element.address.address_line2}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.address.address_line2 ? element.address.address_line2 : 'NA'}} </td>
   </ng-container>
   <ng-container matColumnDef="postalCode">
     <th mat-header-cell *matHeaderCellDef> Postal Code </th>
-    <td mat-cell *matCellDef="let element"> {{element.address.postal_code}} </td>
+    <td mat-cell *matCellDef="let element"> {{ element.address.postal_code ? element.address.postal_code : 'NA'}} </td>
   </ng-container>
+
+  <ng-container matColumnDef="edit">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element" (click)="navigateToEdit(element.id)"> <i class="material-icons"> border_color </i> </td>
+    </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
