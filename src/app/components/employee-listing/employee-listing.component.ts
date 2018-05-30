@@ -18,10 +18,10 @@ export class EmployeeListingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.dataSource.filterPredicate = (data,filter) => ( data.name.toLowerCase().indexOf(filter) != -1 || data.address.city.toLowerCase().indexOf(filter) != -1 );
   }
   applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    filterValue = filterValue.trim().toLowerCase();
     this.dataSource.filter = filterValue;
   }
 
