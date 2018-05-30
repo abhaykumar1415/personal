@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { EmployeeAddComponent } from './components/employee-add/employee-add.component';
 import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 import { EmployeeListingComponent } from './components/employee-listing/employee-listing.component';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-
+import {MatButtonModule, MatTableModule, MatFormFieldModule, MatInputModule} from '@angular/material';
+import {SharedDataService} from './services/shared-data.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +21,9 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatButtonModule, MatCheckboxModule
+    MatButtonModule, MatTableModule, MatFormFieldModule, MatInputModule
   ],
-  providers: [],
+  providers: [SharedDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
